@@ -17,6 +17,8 @@ services:
     image: vibralabs/atrium:latest
     ports:
       - "8080:8080"
+      - "${HOST_PORT_WEB:-3000}:8080"
+      - "${HOST_PORT_API:-3001}:3001"
     environment:
       DATABASE_URL: "postgresql://${POSTGRES_USER:-atrium}:${POSTGRES_PASSWORD:-atrium}@postgres:5432/${POSTGRES_DB:-atrium}"
       BETTER_AUTH_SECRET: "${BETTER_AUTH_SECRET:-change-me-to-a-random-string-at-least-32-chars}"
